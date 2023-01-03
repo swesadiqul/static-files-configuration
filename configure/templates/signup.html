@@ -33,7 +33,7 @@
             <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/signup">SignUp</a>
+            <a class="nav-link" href="{% url 'signup' %}">SignUp</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
@@ -63,21 +63,38 @@
 
 
   <div class="container">
-    <h1 class="text-white bg-info my-4 p-4 text-center"><mark>Login Form</mark></h1>
-    <form method="get" action="">
+    <h1 class="text-white bg-info my-4 p-4 text-center"><mark>SignUp Form</mark></h1>
+    <form method="post" action="">
+        {% csrf_token %}
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">First Name</label>
+        <!-- <input type="text" class="form-control" name="first_name" id="exampleInputEmail1" aria-describedby="emailHelp"> -->
+        {{ form.first_name }}
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Last Name</label>
+        <!-- <input type="text" class="form-control" name="last_name" id="exampleInputEmail1" aria-describedby="emailHelp"> -->
+        {{ form.first_name }}
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Phone Number</label>
+        <!-- <input type="text" class="form-control" name="phone" id="exampleInputEmail1" aria-describedby="emailHelp"> -->
+        {{ form.phone }}
+        <div id="emailHelp" class="form-text">We'll never share your phone number with anyone else.</div>
+      </div>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <!-- <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp"> -->
+        {{ form.email }}
+        {{ form.errors.email }}
         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+        <!-- <input type="password" name="password" class="form-control" id="exampleInputPassword1"> -->
+        {{ form.password }}
       </div>
-      <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" name="check" for="exampleCheck1">Check me out</label>
-      </div>
+      
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
